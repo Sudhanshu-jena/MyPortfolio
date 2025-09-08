@@ -1,0 +1,86 @@
+<!-- portfolio/templates/about.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About - Python Developer Portfolio{% endblock %}
+
+{% block content %}
+<section class="about-section section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6" data-aos="fade-right">
+                <h2 class="section-title">
+                    About <span class="gradient-text">Me</span>
+                </h2>
+                <p class="lead">
+                    I'm a passionate Python developer with 3 years of experience specializing in Django web development 
+                    and data engineering solutions.
+                </p>
+                <p>
+                    My journey in tech started with a curiosity about how data can drive decisions. Since then, 
+                    I've worked on numerous projects ranging from scalable web applications to complex data pipelines. 
+                    I believe in writing clean, maintainable code and building solutions that make a real impact.
+                </p>
+                <p>
+                    Currently seeking opportunities as a Django Developer or Data Engineer where I can contribute 
+                    my skills and continue growing professionally.
+                </p>
+                
+                <div class="about-info mt-4">
+                    <div class="info-item">
+                        <span class="info-label">Experience:</span>
+                        <span class="info-value">3 Years</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Projects:</span>
+                        <span class="info-value">20+</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Focus:</span>
+                        <span class="info-value">Django & Data Engineering</span>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="#" class="btn btn-gradient">Download Resume</a>
+                </div>
+            </div>
+            
+            <div class="col-lg-6" data-aos="fade-left">
+                <h3 class="mb-4">Technical Skills</h3>
+                {% for skill in skills %}
+                <div class="skill-item mb-3">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span>{{ skill.name }}</span>
+                        
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-animated"  style="width: {{skill.level}}% "></div>
+                    </div> 
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Experience Timeline -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3 class="text-center mb-4" data-aos="fade-up">Experience</h3>
+                <div class="timeline">
+                    {% for exp in experiences %}
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>{{ exp.title }}</h4>
+                            <h5>{{ exp.company }}</h5>
+                            <span class="timeline-date">{{ exp.duration }}</span>
+                            <p>{{ exp.description }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

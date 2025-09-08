@@ -1,0 +1,565 @@
+<!-- portfolio/templates/contact.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact - Python Developer Portfolio{% endblock %}
+
+{% block content %}
+<section class="contact-section section-padding">
+    <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">
+            Get In <span class="gradient-text">Touch</span>
+        </h2>
+        <p class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+            Have a project in mind? Let's discuss how we can work together to bring your ideas to life.
+        </p>
+        
+        <div class="row">
+            <!-- Contact Information -->
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p class="mb-4">
+                        I'm always open to discussing new opportunities, interesting projects, 
+                        or just having a chat about technology and development.
+                    </p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h5>Email</h5>
+                            <p>sudhansuprasad007@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h5>Phone</h5>
+                            <p>+91 97306 20905</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h5>Location</h5>
+                            <p>Mumbai, Maharashtra, India</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h5>Response Time</h5>
+                            <p>Within 24 hours</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="social-links mt-4">
+                        <h5 class="mb-3">Follow Me</h5>
+                        <div class="d-flex gap-3">
+                            <a href="https://github.com/yourusername" target="_blank" class="social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://twitter.com/yourusername" target="_blank" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://stackoverflow.com/users/yourid" target="_blank" class="social-link">
+                                <i class="fab fa-stack-overflow"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="contact-form">
+                    <h3 class="mb-4">Send Message</h3>
+                    
+                    <!-- Display Messages -->
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <form method="post" id="contactForm">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    {{ form.name.label_tag }}
+                                    {{ form.name }}
+                                    {% if form.name.errors %}
+                                        <div class="text-danger small">
+                                            {% for error in form.name.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    {{ form.email.label_tag }}
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                        <div class="text-danger small">
+                                            {% for error in form.email.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="form-group">
+                                {{ form.subject.label_tag }}
+                                {{ form.subject }}
+                                {% if form.subject.errors %}
+                                    <div class="text-danger small">
+                                        {% for error in form.subject.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="form-group">
+                                {{ form.message.label_tag }}
+                                {{ form.message }}
+                                {% if form.message.errors %}
+                                    <div class="text-danger small">
+                                        {% for error in form.message.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-gradient w-100">
+                            <i class="fas fa-paper-plane me-2"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FAQ Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3 class="text-center mb-4" data-aos="fade-up">Frequently Asked Questions</h3>
+                <div class="accordion" id="faqAccordion" data-aos="fade-up">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq1">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                                What services do you offer?
+                            </button>
+                        </h2>
+                        <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                I specialize in Django web development, Python automation, data engineering solutions, 
+                                REST API development, and database design. I can help with both new projects and 
+                                maintaining existing applications.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                What's your typical project timeline?
+                            </button>
+                        </h2>
+                        <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Project timelines vary based on complexity. A simple Django web application might take 
+                                2-4 weeks, while complex data engineering solutions could take 6-12 weeks. I provide 
+                                detailed timelines after understanding your requirements.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                                Do you work with remote teams?
+                            </button>
+                        </h2>
+                        <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes! I have extensive experience working with remote and distributed teams. 
+                                I'm comfortable with various collaboration tools and maintain excellent communication 
+                                throughout the project lifecycle.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                                What's your approach to project development?
+                            </button>
+                        </h2>
+                        <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                I follow agile methodologies with regular check-ins and deliverables. I start with 
+                                requirement gathering, create detailed technical specifications, develop with continuous 
+                                testing, and provide comprehensive documentation and deployment support.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+                                Do you provide ongoing support?
+                            </button>
+                        </h2>
+                        <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Absolutely! I offer various support packages including bug fixes, feature enhancements, 
+                                performance optimization, and general maintenance. I believe in building long-term 
+                                relationships with my clients.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="row mt-5">
+            <div class="col-12 text-center" data-aos="fade-up">
+                <div class="cta-section">
+                    <h3 class="mb-3">Ready to Start Your Project?</h3>
+                    <p class="mb-4">
+                        Let's discuss your requirements and create something amazing together.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="tel:+911234567890" class="btn btn-outline">
+                            <i class="fas fa-phone me-2"></i>
+                            Call Now
+                        </a>
+                        <a href="mailto:your.email@example.com" class="btn btn-gradient">
+                            <i class="fas fa-envelope me-2"></i>
+                            Email Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Custom Styles for Contact Page -->
+<style>
+    .alert {
+        background: rgba(100, 255, 218, 0.1);
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        border-radius: 10px;
+    }
+    
+    .alert-success {
+        background: rgba(40, 167, 69, 0.1);
+        border-color: #28a745;
+        color: #28a745;
+    }
+    
+    .alert-warning {
+        background: rgba(255, 193, 7, 0.1);
+        border-color: #ffc107;
+        color: #ffc107;
+    }
+    
+    .form-group {
+        position: relative;
+        margin-bottom: 1rem;
+    }
+    
+    .form-group label {
+        position: absolute;
+        top: 12px;
+        left: 15px;
+        color: var(--text-light);
+        transition: all 0.3s ease;
+        pointer-events: none;
+        font-weight: 500;
+    }
+    
+    .form-group.focused label,
+    .form-group input:focus + label,
+    .form-group textarea:focus + label {
+        top: -8px;
+        left: 10px;
+        font-size: 0.85rem;
+        color: var(--accent);
+        background: var(--light-bg);
+        padding: 0 5px;
+    }
+    
+    .accordion-item {
+        background: var(--light-bg);
+        border: 1px solid rgba(100, 255, 218, 0.1);
+        margin-bottom: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .accordion-button {
+        background: var(--light-bg);
+        color: var(--text-white);
+        border: none;
+        padding: 1rem 1.5rem;
+    }
+    
+    .accordion-button:not(.collapsed) {
+        background: rgba(100, 255, 218, 0.1);
+        color: var(--accent);
+        box-shadow: none;
+    }
+    
+    .accordion-button:focus {
+        box-shadow: none;
+        border-color: var(--accent);
+    }
+    
+    .accordion-body {
+        background: var(--light-bg);
+        color: var(--text-light);
+        padding: 1.5rem;
+    }
+    
+    .cta-section {
+        background: var(--light-bg);
+        padding: 3rem 2rem;
+        border-radius: 15px;
+        border: 1px solid rgba(100, 255, 218, 0.1);
+    }
+    
+    .cta-section h3 {
+        color: var(--text-white);
+    }
+    
+    .contact-item:hover {
+        transform: translateX(10px);
+        transition: transform 0.3s ease;
+    }
+    
+    .contact-item i {
+        transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover i {
+        color: var(--text-white);
+        transform: scale(1.1);
+    }
+    
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .contact-info {
+            margin-bottom: 3rem;
+        }
+        
+        .hero-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .btn {
+            width: 100%;
+            max-width: 250px;
+        }
+        
+        .contact-item {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item i {
+            font-size: 1.2rem;
+            width: 35px;
+            height: 35px;
+        }
+        
+        .cta-section {
+            padding: 2rem 1rem;
+        }
+        
+        .social-links .d-flex {
+            justify-content: center;
+        }
+    }
+    
+    /* Form Animation */
+    @keyframes formFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .contact-form {
+        animation: formFadeIn 0.6s ease-out;
+    }
+    
+    /* Button Loading State */
+    .btn:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+    
+    .btn .fa-spinner {
+        animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    /* Accordion Custom Styles */
+    .accordion-button::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2364ffda'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    }
+    
+    /* Success Animation */
+    .alert.show {
+        animation: alertSlideIn 0.5s ease-out;
+    }
+    
+    @keyframes alertSlideIn {
+        from {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+</style>
+
+<script>
+    // Contact form enhancements
+    document.addEventListener('DOMContentLoaded', function() {
+        // Form floating labels
+        const formGroups = document.querySelectorAll('.form-group');
+        
+        formGroups.forEach(group => {
+            const input = group.querySelector('input, textarea');
+            const label = group.querySelector('label');
+            
+            if (input && label) {
+                // Check if field has value on load
+                if (input.value.trim() !== '') {
+                    group.classList.add('focused');
+                }
+                
+                // Focus events
+                input.addEventListener('focus', () => {
+                    group.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', () => {
+                    if (input.value.trim() === '') {
+                        group.classList.remove('focused');
+                    }
+                });
+                
+                // Input events for real-time validation
+                input.addEventListener('input', () => {
+                    if (input.value.trim() !== '') {
+                        group.classList.add('focused');
+                        input.classList.remove('is-invalid');
+                    } else {
+                        group.classList.remove('focused');
+                    }
+                });
+            }
+        });
+        
+        // Form validation
+        const form = document.getElementById('contactForm');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                let isValid = true;
+                const requiredFields = form.querySelectorAll('[required]');
+                
+                requiredFields.forEach(field => {
+                    if (field.value.trim() === '') {
+                        field.classList.add('is-invalid');
+                        isValid = false;
+                    } else {
+                        field.classList.remove('is-invalid');
+                    }
+                });
+                
+                // Email validation
+                const emailField = form.querySelector('input[type="email"]');
+                if (emailField) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(emailField.value)) {
+                        emailField.classList.add('is-invalid');
+                        isValid = false;
+                    }
+                }
+                
+                if (!isValid) {
+                    e.preventDefault();
+                    // Scroll to first invalid field
+                    const firstInvalid = form.querySelector('.is-invalid');
+                    if (firstInvalid) {
+                        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        firstInvalid.focus();
+                    }
+                }
+            });
+        }
+        
+        // Auto-dismiss alerts after 5 seconds
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(alert => {
+            setTimeout(() => {
+                const bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            }, 5000);
+        });
+        
+        // Smooth scroll to contact form from CTA buttons
+        const emailBtn = document.querySelector('a[href="mailto:your.email@example.com"]');
+        if (emailBtn) {
+            emailBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const contactForm = document.getElementById('contactForm');
+                if (contactForm) {
+                    contactForm.scrollIntoView({ behavior: 'smooth' });
+                    const nameField = contactForm.querySelector('input[name="name"]');
+                    if (nameField) {
+                        setTimeout(() => nameField.focus(), 500);
+                    }
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}
