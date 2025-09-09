@@ -1,0 +1,7 @@
+# Environment variables
+.env
+
+# Local files
+__pycache__/
+*.pyc
+db.sqlite3  # Don't push local DB
