@@ -30,6 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = ['https://portfolio-sudhanshu.up.railway.app']
 
 # Application definition
 
